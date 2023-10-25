@@ -1,0 +1,50 @@
+---
+const {
+    ruta
+} = Astro.props;
+
+const {
+    id,
+    titulo,
+    subtitulo,
+    introduccion,
+    etiqueta,
+    pasos,
+} = ruta;
+---
+
+<style>
+    small {
+        font-size: 16px;
+    }
+</style>
+
+<article>
+    <h2>{titulo}</h2>
+    <p><small>{subtitulo}</small></p>
+    <aside>
+        <p>{etiqueta}</p>
+    </aside>
+    <p>{introduccion}</p>
+    {
+        pasos.map(({titulo, descripcion, links}) => {
+            return (
+                <section>
+                    <h3>{titulo}</h3>
+                    <p>{descripcion}</p>
+                    <ul>
+                        {
+                            links.map(({nombre, url}) => {
+                                return (
+                                    <li>
+                                        <a href={url}>{nombre}</a>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </section>
+            )
+        })
+    }
+</article>

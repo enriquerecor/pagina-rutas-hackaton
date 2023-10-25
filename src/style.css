@@ -1,0 +1,39 @@
+#label-busqueda {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    padding: 5px;
+}
+
+#label-busqueda input {
+    width: 250px;
+    height: 40px;
+    margin: 0;
+    border-color: #9b9b9b;
+}
+
+input[type=text] {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+section aside {
+    width: 320px;
+}
+
+mark {
+    border-radius: 4px;
+    background: #f0f1ff;
+    color: #313131;
+}
+
+article section {
+    justify-content: flex-start;
+}
+
+ul li ul li a {
+    font-size: 15px;
+}

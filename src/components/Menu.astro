@@ -1,0 +1,50 @@
+---
+import iconoTexto from "../assets/icons/skill-path-ai-high-resolution-logo-transparent.svg";
+import sinIcono from "../assets/icons/sin-icono.png";
+import { Image } from "astro:assets";
+---
+<style>
+    nav > div {
+        display: flex;
+        align-items: center;
+    }
+
+    #icono-usuario {
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+        min-height: 60px;
+        border-radius: 50%;
+        margin-left: 10px;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+</style>
+
+<nav>
+    <a href="/">
+        <Image src={iconoTexto} width="400" alt="Logo"/>
+    </a>
+    <div>
+        <ul>
+            <li></li>
+            <li><a href="#seccion-destacados">Destacado</a></li>
+            <li><a href="#">Categorías</a>
+                <ul>
+                    <li><a href="#">Programación</a></li>
+                    <li><a href="#">Finanzas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contribuye</a></li>
+            <li><a href="#">Regístrate</a></li>
+        </ul>
+        <div id="icono-usuario">
+            <Image src={sinIcono} width="60" height="60" alt="imagen de perfil"/>
+        </div>
+    </div>
+</nav>

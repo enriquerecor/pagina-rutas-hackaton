@@ -1,0 +1,14 @@
+---
+import iconoBusqueda from "../assets/icons/flecha-circulo-derecha.svg";
+import {Image} from "astro:assets";
+---
+<h1>¿Qué quieres <u>aprender</u> hoy?</h1>
+<p>La inteligencia artificial generará una ruta de aprendizaje adaptada a tus preferencias.</p>
+<p>
+    <label id="label-busqueda">
+        <input placeholder="Programación, finanzas, matemáticas" type="text">
+        <a href="#">
+            <Image src={iconoBusqueda} height="30" alt="Icono de búsqueda"/>
+        </a>
+    </label>
+</p>

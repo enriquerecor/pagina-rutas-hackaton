@@ -1,0 +1,42 @@
+---
+const {
+    id,
+    titulo,
+    subtitulo,
+    apunte,
+    textoEtiqueta,
+    claseEtiqueta
+} = Astro.props;
+---
+
+<style>
+    sup.rojo {
+        background-color: #e9370d;
+    }
+
+    aside {
+        cursor: pointer;
+    }
+
+    aside:hover:nth-child(odd) {
+        background-color: whitesmoke;
+        transform: rotate(-.5deg);
+    }
+
+    aside:hover:nth-child(even) {
+        background-color: whitesmoke;
+        transform: rotate(.5deg);
+    }
+
+    a {
+        all: unset;
+    }
+</style>
+
+<a href=`/${id}`>
+    <aside>
+        <h3>{titulo} {textoEtiqueta && <sup class={claseEtiqueta}>{textoEtiqueta}</sup>}</h3>
+        <p>{subtitulo}</p>
+        <small>{apunte}</small>
+    </aside>
+</a>

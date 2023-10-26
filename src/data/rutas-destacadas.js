@@ -481,7 +481,7 @@ export const rutasDestacadas = [
                 "links": [
                     {
                         "nombre": "Tutorial de HTML básico",
-                        "url": "https://www.example.com/tutorial-html-basico"
+                        "url": "https://developer.mozilla.org/es/docs/Learn/HTML"
                     }
                 ]
             },

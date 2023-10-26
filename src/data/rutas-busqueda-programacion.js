@@ -1,7 +1,7 @@
 
 export const rutasBusquedaProgramacion = [
     {
-        "id": 1,
+        "id": 7,
         "titulo": "Introducción a la programación",
         "subtitulo": "Aprende los conceptos básicos",
         "descripcion": "Esta ruta te enseñará los fundamentos de la programación, como variables, estructuras de control y funciones.",
@@ -55,7 +55,7 @@ export const rutasBusquedaProgramacion = [
         ]
     },
     {
-        "id": 2,
+        "id": 8,
         "titulo": "Desarrollo web básico",
         "subtitulo": "Aprende a crear páginas web simples",
         "descripcion": "Esta ruta te enseñará los conceptos básicos de HTML, CSS y JavaScript para que puedas crear tus propias páginas web.",
@@ -97,7 +97,7 @@ export const rutasBusquedaProgramacion = [
         ]
     },
     {
-        "id": 3,
+        "id": 9,
         "titulo": "Python para principiantes",
         "subtitulo": "Aprende a programar en Python",
         "descripcion": "Esta ruta te guiará desde los conceptos básicos hasta la creación de programas simples utilizando Python.",
@@ -149,7 +149,7 @@ export const rutasBusquedaProgramacion = [
         ]
     },
     {
-        "id": 4,
+        "id": 10,
         "titulo": "Programación sencilla",
         "subtitulo": "Verás lo fácil que es aprender a programar",
         "descripcion": "Aprende los fundamentos de la programación, utilizando las estructuras de control más sencialls",

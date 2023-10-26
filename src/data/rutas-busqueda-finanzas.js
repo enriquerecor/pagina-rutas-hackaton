@@ -1,6 +1,6 @@
 export const rutasBusquedaFinanzas = [
     {
-        "id": 1,
+        "id": 4,
         "titulo": "Introducción a las Finanzas Avanzadas",
         "subtitulo": "Aprende los conceptos básicos",
         "descripcion": "En esta ruta de aprendizaje, explorarás los conceptos fundamentales de las finanzas avanzadas, incluyendo la valoración de activos, la gestión del riesgo y la toma de decisiones financieras. Además, adquirirás habilidades para evaluar estrategias de inversión y entender los mercados financieros.",
@@ -96,7 +96,7 @@ export const rutasBusquedaFinanzas = [
         ]
     },
     {
-        "id": 2,
+        "id": 5,
         "titulo": "Estrategias de Inversión Avanzadas",
         "subtitulo": "Aprende a maximizar tus inversiones",
         "descripcion": "En esta ruta de aprendizaje, descubrirás técnicas y estrategias avanzadas para maximizar tus inversiones. Aprenderás sobre inversiones alternativas, diversificación geográfica, inversiones en mercados internacionales y estrategias de inversión a largo plazo.",
@@ -188,7 +188,7 @@ export const rutasBusquedaFinanzas = [
         ]
     },
     {
-        "id": 3,
+        "id": 6,
         "titulo": "Análisis Técnico y Fundamental en Finanzas",
         "subtitulo": "Aprende a analizar los mercados financieros",
         "descripcion": "En esta ruta de aprendizaje, adquirirás habilidades para analizar los mercados financieros utilizando tanto el análisis técnico como el análisis fundamental. Aprenderás a interpretar gráficos, identificar tendencias, evaluar estados financieros y analizar noticias económicas.",

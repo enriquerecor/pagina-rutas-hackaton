@@ -1,27 +1,109 @@
 ---
 interface Props {
-	title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 
 import styleCSS from '../style.css';
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://unpkg.com/mvp.css">
-		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">-->
-		<link rel="stylesheet" href={styleCSS}>
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Página para el Hack4Edu2023"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <meta name="view-transition" content="same-origin"/>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <title>{title}</title>
+</head>
+<body>
+<slot/>
+</body>
 </html>
+
+<script>
+    if (document.startViewTransition) {
+        window.navigation.addEventListener('navigate', (event) => {
+            const toUrl = new URL(event.destination.url)
+            if (location.origin !== toUrl.origin || location.pathname === toUrl.pathname) return
+
+            // si es una navegación en el mismo dominio (origen)
+            event.intercept({
+                async handler() {
+                    // vamos a cargar la página de destino
+                    // utilizando un fetch para obtener el HTML
+                    const response = await fetch(toUrl.pathname) // /clean-code
+                    const text = await response.text()
+                    // quedarnos sólo con el contenido del html dentro de la etiqueta body
+                    // usamos un regex para extraerlo
+                    const [, data] = text.match(/<body>([\s\S]*)<\/body>/i)
+
+                    // utilizar la api de View Transition API
+                    document.startViewTransition(() => {
+                        // el scroll hacia arriba del todo
+                        document.body.innerHTML = data
+                        document.documentElement.scrollTop = 0
+                    })
+                }
+            })
+        })
+    }
+</script>
+
+
+<style is:global>
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 200ms;
+    }
+
+    .cabecera-linea {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #label-busqueda {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    #label-busqueda input {
+        width: 250px;
+        height: 40px;
+        margin: 0;
+        border-color: #9b9b9b;
+    }
+
+    input[type=text] {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    section aside {
+        width: 320px;
+    }
+
+    mark {
+        border-radius: 4px;
+        background: #f0f1ff;
+        color: #313131;
+    }
+
+    article section {
+        justify-content: flex-start;
+    }
+
+    ul li ul li a {
+        font-size: 15px;
+    }
+</style>

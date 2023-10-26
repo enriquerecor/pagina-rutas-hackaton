@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {Image} from "astro:assets";
+
+import Busqueda from "../components/Busqueda.astro";
+import Tarjeta from "../components/Tarjeta.astro";
+import logotipo from "../assets/icons/learning-path-genelearning-path-gener-favicon-color.png";
+
+import {rutasBusquedaProgramacion} from "../data/rutas-busqueda-programacion";
+import {rutasBusquedaFinanzas} from "../data/rutas-busqueda-finanzas";
+import {rutasBusquedaSostenibilidad} from "../data/rutas-busqueda-sostenibilidad";
+
+const busqueda = Astro.params.resultados;
+let rutas = [];
+
+const TEMAS_BUSQUEDA = {
+    "programacion": rutasBusquedaProgramacion,
+    "programar": rutasBusquedaProgramacion,
+    "principiantes": rutasBusquedaProgramacion,
+    "principiante": rutasBusquedaProgramacion,
+
+    "finanzas": rutasBusquedaFinanzas,
+    "avanzadas": rutasBusquedaFinanzas,
+    "avanzado": rutasBusquedaFinanzas,
+    "ahorro": rutasBusquedaFinanzas,
+    "inversion": rutasBusquedaFinanzas,
+
+    "sostenibilidad": rutasBusquedaSostenibilidad,
+    "intermedio": rutasBusquedaSostenibilidad,
+    "nivel": rutasBusquedaSostenibilidad,
+};
+
+
+for (const tema in TEMAS_BUSQUEDA) {
+    if (busqueda.toLowerCase().includes(tema)) {
+        rutas = TEMAS_BUSQUEDA[tema];
+        break;
+    }
+}
+---
+
+<Layout>
+    <header class="cabecera-linea">
+        <a href="/">
+            <Image src={logotipo} width="50" height="50" alt="logotipo de la empresa"/>
+        </a>
+        <Busqueda busqueda={busqueda}/>
+    </header>
+    <main>
+        <section>
+            {
+                rutas?.map((ruta) => (
+                        <Tarjeta ruta={ruta}/>
+                ))
+            }
+        </section>
+    </main>
+</Layout>

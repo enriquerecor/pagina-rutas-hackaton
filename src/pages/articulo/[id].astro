@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {Image} from "astro:assets";
+
+import Articulo from "../../components/Articulo.astro";
+
+import logotipo from "../../assets/icons/learning-path-genelearning-path-gener-favicon-color.png";
+
+import {rutasDestacadas} from "../../data/rutas-destacadas";
+const {id } = Astro.params;
+
+const ruta = rutasDestacadas.find(ruta => ruta.id == id);
+
+if (!ruta) {
+    Astro.redirect('/');
+}
+---
+
+<Layout title={"Ruta " + id}>
+    <header>
+        <a href="/">
+            <Image src={logotipo} width="50" height="50" alt="logotipo de la empresa"/>
+        </a>
+    </header>
+    <main>
+        <Articulo ruta={ruta}/>
+    </main>
+</Layout>
+
+<style>
+    header {
+        padding: 2rem 1rem 1rem 1rem
+    }
+
+    main {
+        padding: 1rem 1rem;
+    }
+</style>

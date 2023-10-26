@@ -1,15 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import {Image} from 'astro:assets';
+
 import Menu from "../components/Menu.astro";
 import Busqueda from "../components/Busqueda.astro";
-import TarjetaRuta from "../components/TarjetaRuta.astro";
-import ArticuloRuta from "../components/ArticuloRuta.astro";
+import Tarjeta from "../components/Tarjeta.astro";
+
+import {rutasDestacadas} from "../data/rutas-destacadas";
 ---
 
-<Layout title="Generado de rutas">
+<Layout title="Skill Path AI">
 	<header>
 		<Menu />
+        <h1>¿Qué quieres <u>aprender</u> hoy?</h1>
+        <p>La inteligencia artificial generará una ruta de aprendizaje adaptada a tus preferencias.</p>
 		<Busqueda />
 	</header>
 	<main>
@@ -19,25 +23,9 @@ import ArticuloRuta from "../components/ArticuloRuta.astro";
 				<h2>Rutas destacadas</h2>
 				<p>Un resumen con las mejores rutas de hoy, seleccionadas <mark>exclusivamente</mark> para ti.</p>
 			</header>
-			<TarjetaRuta
-				id="0"
-				titulo="Bases en finanzas"
-				subtitulo="Aprende a gestionar correctamente tu dinero, paso a paso. Una guía sencilla y para todos."
-				textoEtiqueta="mejor valorado"
-				claseEtiqueta="rojo"
-			/>
-			<TarjetaRuta
-				id="1"
-				titulo="Domina el análisis matemático"
-				subtitulo="Sigue esta ruta y terminaras siendo un experto en resolver derivadas e integrales. Mejora tus conocimientos de cálculo y prepárate para bordarlo en lox exámenes."
-			/>
-			<TarjetaRuta
-				id="2"
-				titulo="Desarrollo front-end"
-				subtitulo="Descubre las bases del desarrollo web fron-end. Es decir, cómo crear páginas web que funcionan correctamente en cualquier dispositivo."
-				textoEtiqueta="más popular"
-				apunte="*no requiere conocimientos de programación"
-			/>
+			<Tarjeta ruta={rutasDestacadas[0]} />
+			<Tarjeta ruta={rutasDestacadas[2]} />
+			<Tarjeta ruta={rutasDestacadas[1]} />
 		</section>
 		<hr>
 		<section>
@@ -47,26 +35,56 @@ import ArticuloRuta from "../components/ArticuloRuta.astro";
 			</blockquote>
 		</section>
 		<hr>
-		<hr>
 		<div>
 			<details>
-				<summary>Expandable title</summary>
-				<p>Revealed content</p>
+				<summary>Acerca de Open Path AI</summary>
+				<p>
+					Open Path AI es una plataforma de aprendizaje adaptativo
+					que utiliza inteligencia artificial para generar rutas de
+					aprendizaje personalizadas para sus usuarios.
+				</p>
+				<p>
+					Tiene como objetivo ayudar a cualquier persona
+					a aprender cualquier cosa, en cualquier momento y en
+					cualquier lugar.
+					Es un proyecto ambicioso que busca revolucionar la
+					educación y el aprendizaje, sobre todo en los lugares
+					en los que no se tiene acceso a recursos de calidad.
+				</p>
+				<p>
+					Creemos que la educación es un derecho humano y que
+					podemos lograr que sea accesible para todos, gracias
+					a la inteligencia artificial, de la mano de OpenAI.
+				</p>
 			</details>
 			<details>
-				<summary>Another expandable title</summary>
-				<p>More revealed content</p>
+				<summary>¿Quiénes somos?</summary>
+				<p>
+					Somos un equipo de cuatro estudiantes del doble grado de
+					ADET + Ingeniería Informática en la UPSA.
+				<ul>
+					<li>Alberto Cortijo Macías</li>
+					<li>César Mata Rodríguez</li>
+					<li>Alejandro Jianana Qiu Qiu</li>
+					<li>Enrique Redondo Cortés</li>
+				</ul>
+				</p>
 			</details>
-			<br>
 		</div>
 	</main>
 	<footer>
 		<hr>
 		<p>
-			<small>Desarrollado por: Alberto Cortijo, César Mata, Alejandro Qiu y Enrique Redondo.</small>
+			<small>Hack4Edu, 2023</small>
 		</p>
 		<p>
 			<b>Universidad Pontificia de Salamanca</b>
 		</p>
 	</footer>
 </Layout>
+
+<style>
+	details p {
+		width: 80%;
+	}
+</style>

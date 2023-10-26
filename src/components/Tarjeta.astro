@@ -1,0 +1,54 @@
+---
+
+const {
+    ruta,
+} = Astro.props;
+
+const {
+    id,
+    titulo,
+    descripcion,
+    etiqueta,
+    colorEtiqueta,
+    apunte,
+} = ruta;
+---
+
+<a href=`/articulo/${id}`>
+    <aside>
+        <h3>{titulo} {etiqueta && <sup class={colorEtiqueta}>{etiqueta}</sup>}</h3>
+        <p>{descripcion}</p>
+        <small>{apunte}</small>
+    </aside>
+</a>
+
+<style>
+    a {
+        all: unset;
+    }
+    aside {
+        cursor: pointer;
+    }
+
+    aside:hover:nth-child(odd) {
+        background-color: whitesmoke;
+        transform: rotate(-.5deg);
+    }
+
+    aside:hover:nth-child(even) {
+        background-color: whitesmoke;
+        transform: rotate(.5deg);
+    }
+
+    /* Clases de los sup. */
+    sup.rojo {
+        background-color: #e9370d;
+    }
+    sup.amarillo {
+        background-color: #805c00;
+    }
+    sup.verde {
+        background-color: #0d9e00;
+    }
+
+</style>

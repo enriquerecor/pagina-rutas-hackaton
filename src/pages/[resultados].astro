@@ -13,30 +13,32 @@ import {rutasBusquedaSostenibilidad} from "../data/rutas-busqueda-sostenibilidad
 const busqueda = Astro.params.resultados;
 let rutas = [];
 
-const TEMAS_BUSQUEDA = {
-    "programacion": rutasBusquedaProgramacion,
-    "programar": rutasBusquedaProgramacion,
-    "principiantes": rutasBusquedaProgramacion,
-    "principiante": rutasBusquedaProgramacion,
+// This code is for v4 of the openai package: npmjs.com/package/openai
+import OpenAI from "openai";
 
-    "finanzas": rutasBusquedaFinanzas,
-    "avanzadas": rutasBusquedaFinanzas,
-    "avanzado": rutasBusquedaFinanzas,
-    "ahorro": rutasBusquedaFinanzas,
-    "inversion": rutasBusquedaFinanzas,
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
-    "sostenibilidad": rutasBusquedaSostenibilidad,
-    "intermedio": rutasBusquedaSostenibilidad,
-    "nivel": rutasBusquedaSostenibilidad,
-};
+const response = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo-0613",
+    messages: [
+        {
+            "role": "system",
+            "content": "Un usuario va a decir un tema sobre el que quiere aprender y si es principiante, intermedio o avanzado en él. Tu trabajo será generar mínimo 3 rutas de aprendizaje con varios pasos para ese tema y el nivel de conocimientos del usuario. \nCada ruta debe debe ser un elemento de array de JavaScript con una estructura en formato JSON con los siguientes parámetros:\n{\n\tid,\t\t\t\t// Debe ser un número entero\n       titulo,\t\t\t// Debe ser corto.\n       subtitulo,             \t// Una frase corta.\n       descripcion,\t\t// Debe ser un párrafono de máximo 3 frases.\n       apunte,  \t\t\t// String de entre 2 y 6 palabras clave separadas por comas que identifican la ruta\n       etiqueta,      \t\t// Pequeño texto de una o dos palabras.\n       colorEtiqueta,  \t// Debe ser una de las opciones: rojo, verde, amarillo, morado, azul\n\tintroduccion, \t\t// Un párrafo\n\tpasos: [\t\t\t// varios de ellos\n\t\t{\n\t\t\ttitulo,\t\t// título del paso\n\t\t\tdescripcion,\t// descripción del paso\n\t\t\tlinks: [\t\t// varios de ellos\n\t\t\t\t{\n\t\t\t\t\tnombre,\t\t// nombre del recurso\n\t\t\t\t\turl\t\t\t// link al recurso\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}\n\nMuestra únicamente el JSON."
+        },
+        {
+            "role": "user"
+        }
+    ],
+    temperature: 0.79,
+    max_tokens: 3413,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+});
 
-
-for (const tema in TEMAS_BUSQUEDA) {
-    if (busqueda.toLowerCase().includes(tema)) {
-        rutas = TEMAS_BUSQUEDA[tema];
-        break;
-    }
-}
+const rutas = JSON.parse(response.data.choices[0].text);
 ---
 
 <Layout>
